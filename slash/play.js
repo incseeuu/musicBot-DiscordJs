@@ -96,7 +96,7 @@ module.exports = {
           `**[${song.title}](${song.url})** has been added to the Queue`
         )
         .setThumbnail(song.thumbnail)
-        .setFooter({ text: `Duration: ${song.duration}` })
+        .setFooter({ text: `🎵Duration: ${song.duration}🎵` })
     }
     if (!queue.playing) await queue.play()
     await interaction.editReply({
