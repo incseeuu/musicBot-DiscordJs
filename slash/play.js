@@ -44,7 +44,16 @@ module.exports = {
       return interaction.editReply("You need to be in a VC to use this command")
 
     const queue = await client.player.createQueue(interaction.guild)
-    if (!queue.connection) await queue.connect(interaction.member.voice.channel)
+    try {
+            if(!queue.connection){
+                await queue.connect(interaction.member.voice.channel)
+            }
+            interaction.followUp({ content: `Playing ${songTitle}` });
+        } catch (error) {
+            queue.destroy()
+            console.log(error)
+       
+        }
 
     let embed = new MessageEmbed()
 
